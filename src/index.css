@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} 
+a {
+  text-decoration: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+:root{
+  --buttonBackColour: red;
+  --buttonFontColour: black;
+  /*Diiferent Sizes*/
+  --space05rem: 0.5rem;
+  --space1rem: 1rem;
+  --space105rem: 1.5rem;
+  --space2rem: 2rem;
+  --space205rem: 2.5rem;
+  --space3rem: 3rem;
+  --space305rem: 2.5rem;
+  
+  /*Heading */
+  --headpadding: 2rem;
+  --companyNameSize: 3rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

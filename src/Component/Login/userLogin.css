@@ -1,0 +1,10 @@
+.login-back {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-self: center;
+}
+.login-back > * {
+    margin: 1rem auto;
+    
+}

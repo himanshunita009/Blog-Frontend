@@ -1,0 +1,35 @@
+.blogscard-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid black;
+    width: fit-content;
+    align-items: center;
+    min-width: 900px;
+    padding: var(--space05rem);
+}
+.zone-one > a {
+    text-decoration: underline;
+}
+
+.zone-one,.zone-two {
+    display: flex;
+    flex-direction: column;
+}
+.blog-content {
+    max-height: 50px;
+    overflow: hidden;
+}
+.zone-two > span  {
+    padding: var(--space05rem);
+    transition: all 0.2s; 
+    background-color: white;
+    color: dodgerblue;
+    font-weight: bold;
+    border-radius: 50%;
+}
+.zone-two > span:hover {
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+}

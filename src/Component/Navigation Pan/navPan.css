@@ -1,0 +1,26 @@
+.navpan-back {
+    background-color: dodgerblue;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+}
+.navpan-back > .material-icons {
+    margin: 2rem;
+}
+
+.navpan-back > .navpan-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: var(--space05rem);
+    align-items: center;
+    border-bottom: 2px solid black;
+    transition: 0.2s all;
+    text-decoration: none;
+}
+.navpan-child:hover {
+    cursor: pointer;
+    border-color: white;
+    color: white;
+}

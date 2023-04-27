@@ -1,0 +1,4 @@
+.dashboard-back {
+    display: flex;
+    flex-direction: row;
+}

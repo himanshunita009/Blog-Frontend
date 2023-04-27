@@ -1,0 +1,13 @@
+.user-card-back {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 1rem;
+    grid-gap: 0.5rem;
+}
+@media screen and (max-width: 600px) {
+    .user-card-back {
+        display: grid;
+        grid-template-rows: auto auto;
+        
+    }
+}

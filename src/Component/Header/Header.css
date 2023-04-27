@@ -1,0 +1,22 @@
+.head-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: dodgerblue;
+    padding: var(--space1rem) var(--space3rem);
+}
+.head-main > .company-name{
+    font-size: var(--companyNameSize);
+}
+@media screen and (max-width: 650px) {
+    
+    .menu-button {
+        position: fixed;
+        bottom: 4rem;
+        left: 44%;
+        background-color: dodgerblue;
+        border-radius: 50%;
+        opacity: 0.8;
+    }
+}

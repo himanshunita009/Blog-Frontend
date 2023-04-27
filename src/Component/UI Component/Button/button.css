@@ -1,0 +1,10 @@
+.button-back {
+    background-color: var(--buttonBackColour);
+    color: var(--buttonFontColour);
+    padding: var(--space05rem);
+    margin: auto var(--space05rem);
+    font-weight: bold;
+    border-radius: var(--space05rem);
+    cursor: pointer;
+    
+}
