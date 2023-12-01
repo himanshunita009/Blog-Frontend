@@ -6,8 +6,35 @@ import './admin.css';
 import { getBlogsList } from "../BlogList/getBlogsListFetch";
 import BlogList from "../BlogList/BlogList";
 import withRouter from "../../withRouterFn";
-import { Grid } from "@mui/material";
-import { baseUrl } from "../../index";
+import { Chip, Divider, Grid, Typography } from "@mui/material";
+const DashBoard = ({adminData,totalUsers}) => {
+    return (
+        <div className="dashboard">
+            <Grid  container direction={'column'} padding={2} spacing={2}>
+                <Grid textAlign={"center"} item padding={"0.5rem"}>
+                    <Typography  variant='h4'>
+                        Hi! {adminData.name}
+                    </Typography>
+                </Grid>
+                <Grid container padding={"0.5rem"}>
+                    <Grid item margin={"auto"}>
+                        <Divider>
+                            <Chip label="Blogs Summary" />
+                        </Divider>
+                        <ul>
+                            <li>Total User : {totalUsers.length}</li>
+                            <li>Tota Approved Blogs : {adminData.contribution.approved}</li>
+                            <li>Tota Pending Blogs : {adminData.contribution.pending}</li>
+                            <li>Tota Rejected Blogs : {adminData.contribution.rejected}</li>
+                        </ul>
+                    </Grid>
+                        
+                </Grid>
+            </Grid>
+        </div>
+    );
+};
+
 class Admin extends  React.Component {
     constructor(props) {
         super(props);
@@ -30,12 +57,12 @@ class Admin extends  React.Component {
         if(this.props.activeElement >= 6 && this.props.activeElement <= 8){
             listNo = this.props.activeElement-5;
         }
-        console.log(reqType,docId,listNo);
+         
         this.setState({
             blogs: null
         });
         await blogManipulateReq(reqType,docId,listNo);
-        this.loadData(this.props.activeElement,this.props.router.params.email);
+         this.loadData(this.props.activeElement,this.props.router.params.email);
     }
     componentDidMount(){
         
@@ -50,7 +77,7 @@ class Admin extends  React.Component {
                 window.location.assign('/dashboard');
             }else { 
                 this.props.setAdminData(res.user);
-                const userData = await getAllUsers(`${baseUrl}/getUsers`);
+                const userData = await getAllUsers('/getUsers');
                 this.props.setUsersData(userData.users);
             } 
             
@@ -58,7 +85,6 @@ class Admin extends  React.Component {
         this.loadData(this.props.activeElement,this.props.router.params.email);
     }   
     async loadData(listNo,email){
-        console.log('load data');
         if(this.props.activeElement >= 3 && this.props.activeElement <= 5)
             listNo -= 2;
         if(this.props.activeElement >= 6 && this.props.activeElement <= 8)
@@ -78,12 +104,13 @@ class Admin extends  React.Component {
             this.loadData(this.props.activeElement,this.props.router.params.email);
         }
     }
-    render() {
-        
+    render() {  
         return (
           <div className="admin-back">
             {this.props.activeElement === 1 && !this.props.adminData && <div>Loading...</div>}
-            {this.props.activeElement === 1 && this.props.adminData && <div>Hello Admin</div>}
+            {this.props.activeElement === 1 && this.props.adminData && 
+            this.props.users && <DashBoard adminData={this.props.adminData} totalUsers={this.props.users}  
+            />}
             <Grid container padding={2} spacing={2} justifyContent='center'>
                 {this.props.activeElement === 2 && this.props.users && this.props.users.map((user,index) => (
                     <Grid item key={index} xs={12} sm={6} md={3}>
@@ -96,6 +123,7 @@ class Admin extends  React.Component {
                 <BlogList 
                     handleReq={this.handleReq} 
                     blogsData={this.state.blogs} 
+                    rejectBut={true}
                     path={`/admin/${this.props.router.params.email}/approvedBlogs`} 
                     
                 />

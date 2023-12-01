@@ -19,7 +19,6 @@ class UserLogin extends React.Component {
     }
     componentDidMount(){
         checkForAuth().then((res) => {
-            console.log(res);
             if(res.status){
                 if(res.isAdmin)
                     this.props.router.navigation('/admin');
@@ -61,7 +60,6 @@ class UserLogin extends React.Component {
                     errorMsg: data.message
                 }); 
             }
-            console.log(this.state);
         });
     }
     render() {

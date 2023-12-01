@@ -7,7 +7,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import MuiDialog from '../UI Component/Dialog/MuiDialog';
 import { Link } from "react-router-dom";
 import { getBlogsList } from '../BlogList/getBlogsListFetch';
-import { baseUrl } from '../..';
 class AddBlogs extends React.Component {
     constructor(props){
         super(props);
@@ -40,14 +39,14 @@ class AddBlogs extends React.Component {
                 error: 'Title sould be at least 10 characters long !'
             });
             return;
-        }else if (blogData.subject.length < 50){
+        }else if (blogData.subject.length < 10){
             this.setState({
                 success: '',
-                error: 'Subject sould be at least 50 characters long !'
+                error: 'Subject sould be at least 10 characters long !'
             });
             return;
         }
-        fetch(`${baseUrl}/addBlogsData`,{
+        fetch('/addBlogsData',{
             mode: "cors",credentials: 'include',
             method: "POST",
             headers: {

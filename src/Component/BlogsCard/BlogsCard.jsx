@@ -1,6 +1,7 @@
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './BlogsCard.css';
+import React from "react";
 const BlogsCard = ({blogId,blogTitle,blogSubject,path,approveBut,rejectBut,deleteBut,handleClick}) => {
     return ( 
             <Card elevation={4} sx={{margin: '1rem auto',width: '300px'}}>

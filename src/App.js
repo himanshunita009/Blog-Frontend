@@ -11,6 +11,7 @@ import Home from './Component/Home/home';
 import Admin from './Component/Admin/admin';
 import { adminStore } from "./index";
 import { Provider } from "react-redux";
+
 class App extends React.Component {
   render(){
   return (

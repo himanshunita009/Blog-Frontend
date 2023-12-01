@@ -1,8 +1,8 @@
-import { store,baseUrl } from "../../index";
+import { store } from "../../index";
 
 
 export const getBlogsList = async (listNo,user,pageNo) => {
-    return await fetch(`${baseUrl}/getBlogList?listNo=${listNo}&pageNo=${pageNo}&user=${user}`).then((res) => {
+    return await fetch(`/getBlogList?listNo=${listNo}&pageNo=${pageNo}&user=${user}`).then((res) => {
         return res.json();
     }).then((result) => {
         switch(listNo){

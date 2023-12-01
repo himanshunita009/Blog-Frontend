@@ -8,7 +8,6 @@ import rootReducer from "./reducer/myReducer";
 import adminReducer from './reducer/adminReducer';
 export const store = createStore(rootReducer);
 export const adminStore = createStore(adminReducer);
-export const baseUrl = "https://blokbackend.onrender.com";
 const root = ReactDOM.createRoot(document.getElementById('myroot'));
 
 root.render(<Provider store={store} ><App/></Provider>);

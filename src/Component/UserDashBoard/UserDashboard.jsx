@@ -7,15 +7,41 @@ import { store } from '../../index';
 import { connect } from "react-redux";
 import { getBlogsList } from '../BlogList/getBlogsListFetch';
 import withRouter from '../../withRouterFn';
+import { Chip, Divider, Grid, Typography } from '@mui/material';
 const DashBoard = ({user}) => {
     return (
-        <div className="dashboard-back">
-            <span>Welcome {user.name}</span><br />
-            <span>{user.email}</span><br />
-            <span>{user.occupation}</span><br />
-            <span>{user.contribution.approved}</span><br />
-            <span>{user.contribution.pending}</span><br />
-            <span>{user.contribution.rejected}</span>
+        <div className="dashboard">
+            <Grid  container direction={'column'} padding={2} spacing={2}>
+                <Grid textAlign={"center"} item padding={"0.5rem"}>
+                    <Typography  variant='h4'>
+                        Welcome {user.name}
+                    </Typography>
+                </Grid>
+                <Grid container spacing={2} direction={"row"} padding={"0.5rem"}>
+                    <Grid item md={6} sm={12}>
+                        <Divider>
+                            <Chip label="Personal Details" />
+                        </Divider>
+
+                        <ul>
+                            <li>Name : {user.name}</li>
+                            <li>Email : {user.email}</li>
+                            <li>Age : {user.age}</li>
+                        </ul>
+                    </Grid>
+
+                        <Grid item md={6} sm={12}>
+                        <Divider>
+                            <Chip label="Contribution" />
+                        </Divider>
+                        <ul>
+                            <li>Approved Blogs : {user.contribution.approved}</li>
+                            <li>Pending Blogs : {user.contribution.pending}</li>
+                            <li>Rejected Blogs : {user.contribution.rejected}</li>
+                        </ul>
+                    </Grid>
+                </Grid>
+            </Grid>
         </div>
     );
 };
@@ -34,7 +60,7 @@ class UserDashboard extends React.Component {
         checkForAuth().then(async(res) => {
             if(!res.status){
                 window.alert('you are not authorised');
-                //window.location.assign('/login');
+                window.location.assign('/login');
             }else {
                 store.dispatch({type: 'SET_AUTH_STATE',status: res.status,user: res.user,isAdmin: res.isAdmin})
                 this.setState({
@@ -109,6 +135,7 @@ class UserDashboard extends React.Component {
         this.setState({
             blogs: null
         });
+
         await blogManipulateReq(reqType,docId,listNo);
         this.loadData();
     }

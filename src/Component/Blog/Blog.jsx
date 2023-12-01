@@ -3,7 +3,7 @@ import { Stack } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { blogManipulateReq } from "../../functions";
-import { baseUrl } from "../../index";
+import React from "react";
 const Blog = ({index}) => {
     const [blog,setBlog] = useState(null);
     const params = useParams();
@@ -15,7 +15,7 @@ const Blog = ({index}) => {
                 listNo = 2;
             else if(index === 3 || index === 6  || index === 9)
                 listNo = 3;
-            const url = `${baseUrl}/blog/?listNo=${listNo}&id=${params.id}`;
+            const url = `/blog/?listNo=${listNo}&id=${params.id}`;
             fetch(url).then(res => {
                 return res.json();
             }).then(data => {
@@ -54,9 +54,6 @@ const Blog = ({index}) => {
                             </Typography>
                             <Typography variant="p" fontSize='large' textAlign='justify'>
                                 {content.para}
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia possimus assumenda dolorum natus quasi reprehenderit, dignissimos laudantium repellendus! Suscipit nostrum possimus vitae itaque ducimus eligendi minus deleniti vel quaerat. Neque.
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia possimus assumenda dolorum natus quasi reprehenderit, dignissimos laudantium repellendus! Suscipit nostrum possimus vitae itaque ducimus eligendi minus deleniti vel quaerat. Neque.
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia possimus assumenda dolorum natus quasi reprehenderit, dignissimos laudantium repellendus! Suscipit nostrum possimus vitae itaque ducimus eligendi minus deleniti vel quaerat. Neque.
                             </Typography>
                         </Stack>                    
                     ))}

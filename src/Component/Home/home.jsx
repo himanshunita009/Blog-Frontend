@@ -6,9 +6,7 @@ import { getBlogsList } from '../BlogList/getBlogsListFetch';
 class Home extends React.Component {  
     componentDidMount(){
         if(!this.props.blogs){
-            getBlogsList(1,'null',0).then(() => {
-                console.log(this.props.blogs);
-            });
+            getBlogsList(1,'null',0);
         }
     }
     render(){

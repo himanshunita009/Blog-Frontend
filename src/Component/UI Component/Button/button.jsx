@@ -1,5 +1,5 @@
 import './button.css';
-const Button = ({text,icon,handleButtonClick}) => {
+const Button = ({text,handleButtonClick}) => {
     return ( 
         <span className="button-back" onClick={handleButtonClick}>
             <span className="button-text">{text}</span>

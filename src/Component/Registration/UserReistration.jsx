@@ -1,19 +1,11 @@
-import { Button, Container, Grid, Paper, TextField, Typography, useMediaQuery } from "@mui/material";
+import { Button, Container, Grid, Paper, TextField, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import React from "react";
 import { Link } from "react-router-dom";
 import { checkForAuth } from "../../functions";
 import withRouter from "../../withRouterFn";
 import './userRegistration.css';
-import { baseUrl } from "../..";
-function MediaQuery({children}) {
-    const match = useMediaQuery('(max-width: 600px)');
-    return (
-        <Stack spacing={2} direction={match?'column':'row'} border={'1px solid black'}>
-            {children}
-        </Stack>
-    )
-}
+
 class UserRegistration extends React.Component {
     constructor(props){
         super(props);
@@ -113,7 +105,7 @@ class UserRegistration extends React.Component {
                 succuss: 'Registration is in processing Please wait !'
             });
         }
-        fetch(`${baseUrl}/register`,{
+        fetch('/register',{
             method: "POST",
             body: JSON.stringify({
                 name: this.state.name,
@@ -153,7 +145,6 @@ class UserRegistration extends React.Component {
         }).catch((err) => {
             console.log(err);
         });
-        console.log(this.state);
     }
     render(){
     return ( 
